@@ -1,6 +1,8 @@
 # Update EVM cache state to remember things
 
-By checking if a slot if warm, you can remember if you've written to that slot before. With that trick you can simulate transient storage and do weird things like count how many times you've been called, or use cache state as a personal scratchpad during a transaction. See the explanatory [article]().
+Because the warm/cold state of storage slots lasts only a single transaction, that state can be used as a scratchpad to implement transient storage.
+
+See the explanatory [article](https://blog.adhusson.com/solidity/2023/02/03/eip-1153-shim.html).
 
 How to use: inherit `CacheDetector`. The main functions are:
 
