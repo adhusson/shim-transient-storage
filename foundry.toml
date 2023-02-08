@@ -2,5 +2,13 @@
 src = 'src'
 out = 'out'
 libs = ['lib']
+optimizer=true
+optimizater_runs=2000
+via_ir=true
 
+[fmt]
+line_length = 100
+tab_width = 2
+bracket_spacing = true
+int_types = "short"
 # See more config options https://github.com/foundry-rs/foundry/tree/master/config
