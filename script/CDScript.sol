@@ -10,7 +10,7 @@ contract T1 {
   constructor() { }
 
    // not view! or won't be broadcast
-  function f(CacheDetector _c) external 
+  function f(CacheDetector _c) external {
     for (uint i; i < iters; i++) {
       _c.countCalls();
     }
