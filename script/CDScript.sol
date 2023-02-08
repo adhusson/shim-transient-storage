@@ -33,26 +33,6 @@ contract T1 {
   }
 }
 
-contract T2 {
-  uint a;
-
-  function f() public returns (uint) {
-    uint g = gasleft();
-    uint _a = a;
-    console.log(g - gasleft());
-    return _a;
-  }
-}
-
-contract Blabla is Script {
-  function run() public {
-    vm.startBroadcast();
-    T2 t = new T2();
-    t.f();
-    t.f();
-  }
-}
-
 contract CDScript is Script {
   CacheDetector c;
 
