@@ -2,7 +2,7 @@
 
 Because the warm/cold state of storage slots lasts only a single transaction, that state can be used as a scratchpad to implement transient storage.
 
-See the explanatory [article](https://blog.adhusson.com/solidity/2023/02/03/eip-1153-shim.html).
+See the explanatory [article](https://blog.adhusson.com/shim-transient-storage/).
 
 How to use: inherit `CacheDetector`. The main functions are:
 
