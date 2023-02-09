@@ -30,7 +30,7 @@ countCallsBySender()
 ```
 Return the number of times it was called during a tx by the current `msg.sender`.
 
-## [EIP-1153](https://eips.ethereum.org/EIPS/eip-1153)
+## [EIP-1153](https://eips.ethereum.org/EIPS/eip-1153) (transient storage)
 
 _Simulate transient storage. Any stored data will be forgotten at the end of the tx. Any reading/writing interference to slots used with those functions breaks things._
 
@@ -44,7 +44,7 @@ load1153(uint slot)
 ```
 Return any data that was written too `slot` in the current tx.
 
-## Write with view functions
+## Transient storage with view functions
 
 _store/load pair to remember data during a tx without writing to storage. Insanely gas expensive, do not use in real life_
 
