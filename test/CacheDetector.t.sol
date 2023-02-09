@@ -49,6 +49,23 @@ contract CacheDetectorTest is Test {
     assertEq(cd.loadFromCache("b"), 0);
   }
 
+  function test_view_storage2(string memory label, uint256 num1, uint256 num2) public {
+//    string memory label = "label";
+//    uint256 num1 = 4321;
+//    uint256 num2 = 63000;
+
+    vm.assume(keccak256(bytes(label)) != keccak256("b2"));
+    vm.assume(bytes(label).length != 0);
+    cd.storeInCache2(label, num1);
+    assertEq(cd.loadFromCache2(label), num1);
+    assertEq(cd.loadFromCache2(label), num1);
+    assertEq(cd.loadFromCache2("b2"), 0);
+    cd.storeInCache2(label, num2);
+    assertEq(cd.loadFromCache2(label), num2);
+    assertEq(cd.loadFromCache2(label), num2);
+    assertEq(cd.loadFromCache2("b2"), 0);
+  }
+
   function test_countCalls_simple() public {
     assertEq(cd.countCalls(), 1);
     assertEq(cd.countCalls(), 2);

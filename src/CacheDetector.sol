@@ -94,9 +94,37 @@ contract CacheDetector {
     }
   }
 
+  // Store number with label
+  function storeInCache2(string calldata label, uint256 number) external view {
+    uint slot = dataSlot(label, true);
+    uint index = 0;
+    while (number > 0) {
+      if(number%2 == 1){
+          isSlotWarm(slot + index);
+      }
+      number = number >> 1;
+      index++;
+    }
+  }
+
   // Read number with label
   function loadFromCache(string calldata label) external view returns (uint) {
     return stealthCountCalls(dataSlot(label, false));
+  }
+
+  // Read number with label
+  function loadFromCache2(string calldata label) external view returns (uint) {
+    uint res;
+    uint mask = 1;
+    uint slot = dataSlot(label, false);
+    for(uint index = 0; index < 256; index++){
+        (bool warm, uint data) = stealthLoadWithCacheState(slot + index);
+        if(warm){
+            res |= mask;
+        }
+        mask = mask << 1;
+    }
+    return res;
   }
 
   // Utility: get data slot from label
