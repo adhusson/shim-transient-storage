@@ -56,4 +56,18 @@ Associate `label` to `number` for the duration of the tx.
 ```solidity
 loadFromCache(string label)
 ```
+Return the number associated to `label` if there is any, `0` otherwise
+
+## Transient storage with view functions - Slightly Improved
+
+_store/load pair to remember data during a tx without writing to storage. Still very gas expensive, do not use in real life. store + load of one uint256 will consume around 600k gas__
+
+```solidity
+storeInCache2(string label, uint256 number) view
+```
+Associate `label` to `number` for the duration of the tx.
+
+```solidity
+loadFromCache2(string label)
+```
 Return the number associated to `label` if there is any, `0` otherwise.
